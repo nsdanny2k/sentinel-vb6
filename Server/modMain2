@@ -1,0 +1,42 @@
+Attribute VB_Name = "modMain2"
+Option Explicit
+
+Private moShell As New clsShell
+
+Sub Main()
+On Error Resume Next
+If gModeIsReader Then
+    gSystemPath = App.path
+    gLogin.AssertPasswordFile
+    gLogin.ReadPasswordFile
+    If frmServer.AuthenticateMe Then
+        If gIsSupervisor Then
+            frmLogReader.Show vbModal
+        End If
+    End If
+    Unload frmLogReader
+Else
+    goStartup.gOnStartup
+    gModeIsClient = False
+    Dim moTimeLimit As New clsTimeLimit
+    moTimeLimit.TargetFileName = goMsg.BypassPath
+    moTimeLimit.AssertTimeLimit
+    If moShell.WindowFind(vbNullString, gServerCaption) > 0 Then
+        frmMessage.Display "Only a single instance of the application is allowed.", , "Cannot Run Application"
+    Else
+        If gConfig.AssertRegistration Then
+            If moShell.WindowFind(vbNullString, gServerCaption) > 0 Then
+                frmMessage.Display "Only a single instance of the application is allowed.", , "Cannot Run Application"
+            Else
+                If frmServer.AuthenticateMe Then
+                    frmServer.Show vbModal
+                Else
+                    frmServer.ShutdownNoWarning = True
+                End If
+            End If
+        End If
+    End If
+    Unload frmServer
+End If
+End
+End Sub
