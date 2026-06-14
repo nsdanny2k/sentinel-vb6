@@ -4,7 +4,7 @@ Sentinel is a VB6-based Cafe Management System developed during the early Window
 
 Internet cafés proliferated during the 1990s and early 2000s because mobile internet and affordable home DSL connections were still uncommon. Online multiplayer gaming also existed primarily through LAN-based gaming environments. Due to the growing demand for computer rental services, centralized timer systems became necessary to monitor and track billable client usage time.
 
-At the time of development, Windows 95 and later Windows 98 systems were dominant. However, the networking stack of that era was relatively unstable and limited for environments consisting of one centralized server coordinating more than a hundred client workstations simultaneously.
+At the time of development, Windows 95 and later Windows 98 systems were dominant. Reliable client/server desktop database systems and large-scale LAN workstation coordination were still relatively new concepts for small business environments. Networking stacks of that era were comparatively unstable and limited for environments consisting of one centralized server coordinating more than a hundred client workstations simultaneously.
 
 The system was designed around practical business and operational requirements including session monitoring, time recording, workstation access control, reporting, security restrictions, and centralized client management across local area networks.
 
